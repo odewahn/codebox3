@@ -12,6 +12,6 @@ image:figs/make2.gif[]
 . [[Update book wrapper|book]]
 . https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-build-process[Start build process]
 . https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-pull-results[Pull production results]
-. http://example.com[View error log]
+. [View error log|dcps_build_log]
 . http://example.com[View PDF]
 
