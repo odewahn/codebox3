@@ -5,9 +5,9 @@ Need a nice image to go here for Make.
 * http://example.com[Help]
 * http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet]
  
-== Actions
-* http://example.com[Upload images]
-** http://example.com[Commit uploaded images]
+== Images and Figures
+. http://example.com[Upload images]
+. http://example.com[Commit uploaded images]
 
 == Generate Production Build
 . http://example.com[Start build process]
