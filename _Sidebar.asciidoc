@@ -11,7 +11,7 @@ Need a nice image to go here for Make.
 
 == Generate Production Build
 . http://example.com[Start build process]
-. http://example.com[Pull log and pdf from production]
+. http://example.com[Pull results production]
 . http://example.com[View error log]
 . http://example.com[View PDF]
 
