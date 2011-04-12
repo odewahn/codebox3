@@ -9,6 +9,7 @@ Need a nice image to go here for Make.
 * http://example.com[Commit uploaded code]
 * http://example.com[Push repo to github]
 * http://example.com[Generate a production build]
-** http://example.com[Production error log]
-** http://example.com[Production PDF]
+** http://example.com[Pull log and pdf from production]
+** http://example.com[View error log]
+** http://example.com[View PDF]
 
