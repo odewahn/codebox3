@@ -11,7 +11,7 @@ image:figs/make2.gif[]
 == Publish
 . [[Update book wrapper|book]]
 . https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-build-process[Start build process]
-. https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-pull-resultsPull production results]
+. https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-pull-results[Pull production results]
 . http://example.com[View error log]
 . http://example.com[View PDF]
 
