@@ -1,7 +1,7 @@
 Need a nice image to go here for Make.
 
 == Useful Links
-* [[Home page|home]]
+* [[TOC|home]]
 * http://example.com[Help]
 * http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet]
  
