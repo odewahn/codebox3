@@ -1,8 +1,10 @@
 Need a nice image to go here for Make.
 
 == Useful Links
-* [[home]]
-
+* [[home|Book home page]]
+* http://example.com[Help]
+* http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet]
+ 
 == Actions
 * http://example.com[Upload images]
 ** http://example.com[Commit uploaded images]
