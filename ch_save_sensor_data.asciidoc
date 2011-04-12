@@ -7,7 +7,7 @@ This Codebox shows you how to save this sensor data to a Google Spreadsheet. The
 
 [[reading-a-sensor]]
 .Reading sensor data from an arduino and writing it to a Google Spreadsheet
-image::figs/ano_sensor_spreadshee_120910.png[scaledwidth="90%"]
+image:figs/ano_sensor_spreadshee_120910.png[scaledwidth="90%"]
 	
 The sketch relies on the http://code.google.com/p/gdata-java-client/[Google API Client Library for Java], which is a set of code libraries for interacting with various Google's services (not just Spreadsheets). In researching this article, I found Processing guru http://blog.blprnt.com/about[Jer Thorpe's] article http://blog.blprnt.com/blog/blprnt/open-science-h1n1-processing-and-the-google-spreadsheet-api[Open Science, H1N1, Processing, and the Google Spreadsheet API] a great inspiration. While it's based on an older version of the API (version 1.0, while the APIs are now up to version 3.0), it's a great introduction to interacting with Google. Thanks, Jer!
 
@@ -59,6 +59,6 @@ transmit() is where most of the work happens. It starts by creating a couple of 
 
 [[col-header-map]]
 .Column headers map to vairables in Processing
-image::figs/ano_spreadsheet_col_header_map_121010.png[scaledwidth="90%"]
+image:figs/ano_spreadsheet_col_header_map_121010.png[scaledwidth="90%"]
 
 Once you get this sketch working, the possibilities are endless. Well, OK, they're not endless. They're finite. But, there are a lot of possibilities, nevertheless.  Enjoy!
