@@ -9,7 +9,7 @@ Need a nice image to go here for Make.
 . http://example.com[Upload images]
 . http://example.com[Commit uploaded images]
 
-== Generate Production Build
+== Publish
 . http://example.com[Start build process]
 . http://example.com[Pull results production]
 . http://example.com[View error log]
