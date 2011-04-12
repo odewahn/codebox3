@@ -2,7 +2,6 @@ Need a nice image to go here for Make.
 
 == Useful Links
 * [[TOC (home.asciidoc)|home]]
-* http://example.com[Help]
 * http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet]
  
 == Images and Figures
