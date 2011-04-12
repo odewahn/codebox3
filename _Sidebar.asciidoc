@@ -5,7 +5,7 @@ image:figs/make2.gif[]
 * http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet]
  
 == Images and Figures
-. http://vmg044.west.ora.com/upload_image.html [Upload images]
+. http://vmg044.west.ora.com/upload_image.html[Upload images]
 . http://example.com[Commit uploaded images]
 
 == Publish
