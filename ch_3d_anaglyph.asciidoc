@@ -4,22 +4,22 @@ This Codebox describes how to create 3D images using anaglyphic stereography.  T
 
 [[3d-hydrant]]
 .A fire hydrant
-image::figs/3d_hydrant.png[scaledwidth="90%"]
+image:figs/3d_hydrant.png[scaledwidth="90%"]
 
 [[3d-lake]]
 .A lake
-image::figs/3d_lake.png[scaledwidth="90%"]
+image:figs/3d_lake.png[scaledwidth="90%"]
 
 [[3d-radcliffe]]
 .Radcliffe campus in Cambridge, MA
-image::figs/3d_radcliffe.png[scaledwidth="90%"]
+image:figs/3d_radcliffe.png[scaledwidth="90%"]
 
 === Stereoscopy in a Nutshell
 Stereoscopy is a technique of fusing two slightly offset images into a single image in a way that creates an illusion of depth.  The classic 3D technique, called anaglyphic stereoscopy, applies a red filter to the left eye's image and a blue filter to the right eye's image.  The offset images are then aligned on the subject and fused into a single image.  When viewed through a pair of 3D glasses, the technique can create a very effective sense of depth.  <<3d_principles>> should give you the basic concept:
 
 [[3d-principles]]
 .Principles of 3D stereoscpoy
-image::figs/3d_principles.png[scaledwidth="90%"]
+image:figs/3d_principles.png[scaledwidth="90%"]
 
 
 === Take the pictures
@@ -56,7 +56,7 @@ Now to implement the model in Processing.  First, we'll characterize the overlap
 
 [[3d-quadrants]]
 .Possible overlap options
-image::figs/3d_quadrants.png[scaledwidth="90%"]
+image:figs/3d_quadrants.png[scaledwidth="90%"]
 
 
 Armed with this diagram, we're ready to write the code for the overlap.  (In the snippet, W is the width of the two images and H is their height..)  Here's the snippet that shows how to do it:
