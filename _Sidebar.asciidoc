@@ -9,7 +9,7 @@ Need a nice image to go here for Make.
 . http://example.com[Commit uploaded images]
 
 == Publish
-. [[Update book wrapper|book]]
+. [[Update book wrapper|edit/book]]
 . http://example.com[Start build process]
 . http://example.com[Pull results production]
 . http://example.com[View error log]
