@@ -8,8 +8,7 @@ Need a nice image to go here for Make.
 == Actions
 * http://example.com[Upload images]
 ** http://example.com[Commit uploaded images]
-* http://example.com[Commit uploaded code]
-* http://example.com[Push repo to github]
+
 * http://example.com[Generate a production build]
 ** http://example.com[Pull log and pdf from production]
 ** http://example.com[View error log]
