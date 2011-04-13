@@ -21,7 +21,7 @@ The table that defines the IFS system provides the values used in the matrices. 
 
 [[frac-matrix]]
 .The matric for the Barnsley fern
-image::figs/frac_matrix.png[scaledwidth="90%"]
+image:figs/frac_matrix.png[scaledwidth="90%"]
 
 As an example, here's the 3rd transformation matrix for the Barnsley Fern that was shown earlier:
 
