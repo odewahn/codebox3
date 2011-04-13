@@ -3,7 +3,7 @@ This is TOC page for Codebox: Adventures with Processing, an ebook by Andrew Ode
 * [[3D Photography Using Anaglyphic Stereoscopy|ch_3d_anaglyph]]
 * [[Create an ArrayList of Objects|ch_arraylist]]
 * [[Amuse Yourself with Google Autocomplete|ch_autocomplete]]
-* [[ch_exceptions]]
+* [[Exception handling|handling|ch_exceptions]]
 * [[ch_filters]]
 * [[ch_fractals]]
 * [[ch_qr_codes]]
