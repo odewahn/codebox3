@@ -1,10 +1,10 @@
 This is TOC page for Codebox: Adventures with Processing, an ebook by Andrew Odewahn.  It's also a testbed for working with git and AsciiDoc.  If you want to add a new chapter, just put the chapter name into the bullet list and save the doc.  You can then click on the link to start writing and editing.
 
+* [[Create a fractal menagerie|ch_fractals]]
+* [[QR Codes|ch_qr_codes]]
 * [[3D Photography Using Anaglyphic Stereoscopy|ch_3d_anaglyph]]
+* [[Save Sensor Data in a Google Spreadsheets|ch_save_sensor_data]]
 * [[Create an ArrayList of Objects|ch_arraylist]]
 * [[Amuse Yourself with Google Autocomplete|ch_autocomplete]]
 * [[Exception handling|handling|ch_exceptions]]
 * [[Color Filters|ch_filters]]
-* [[Create a fractal menagerie|ch_fractals]]
-* [[QR Codes|ch_qr_codes]]
-* [[Save Sensor Data in a Google Spreadsheets|ch_save_sensor_data]]
