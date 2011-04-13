@@ -1,6 +1,6 @@
 This is TOC page for Codebox: Adventures with Processing, an ebook by Andrew Odewahn.  It's also a testbed for working with git and AsciiDoc.  If you want to add a new chapter, just put the chapter name into the bullet list and save the doc.  You can then click on the link to start writing and editing.
 
-* [[ch_3d_anaglyph]]
+* [[3D Photography Using Anaglyphic Stereoscopy|ch_3d_anaglyph]]
 * [[ch_arraylist]]
 * [[ch_autocomplete]]
 * [[ch_exceptions]]
