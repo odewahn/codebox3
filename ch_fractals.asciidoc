@@ -2,6 +2,8 @@
 
 A http://en.wikipedia.org/wiki/Fractal[fractal], according to Wikipedia, is a "a rough or fragmented geometric shape that can be split into parts, each of which is (at least approximately) a reduced-size copy of the whole."  One of the cool things about fractals is that they use really simple processes to create really complex, natural looking objects, like plants, clouds, flames, and so forth.  This Codebox will show you how to create a fractal menagerie for viewing a few different styles of fractals.
 
+hi there
+
 Along the way, we'll continue to expand on the OOP concepts introduced in Chapter 9 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803&Click=37845[Getting Started with Processing], as well as show how to use the great http://www.sojamo.de/libraries/controlP5/[controlP5] library to create familiar GUI controls used in other languages.
 
 === IFS Fractals
