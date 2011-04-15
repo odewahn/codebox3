@@ -13,7 +13,7 @@ image:_Logo.gif[]
 
 == Validate
 * https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-validate[Validate DocBook]
-* [[View error log|validate_errors.asciidoc]]
+* [[View error log|validate_errors]]
 
 == Publish
 . [[Update book wrapper|book]]
