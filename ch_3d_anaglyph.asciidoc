@@ -52,9 +52,9 @@ As you shift the images around, you're only interested in keeping the portions t
 
 Imagine for a moment that both images have been printed in color on http://www.amazon.com/Premium-InkJet-Transparency-Sheets-C3834A/dp/B00000JKJ2[transparency film].  Next, suppose you held the right image still (it doesn't matter which, but I'm going to use the right image in this example) and treated its upper-left corner as the origin (0,0).  Finally, imagine sliding the left image around on top of the now stationary right image.  The X and Y offsets between the two images' upper-left corner is now a convenient measure of the relative shift.  (From now on, I'll call the X-offset rx and the Y-offset ry.)  Initially, everything on both images overlaps, but as you moved the left piece around to align the subjects, portions of it would stick out over the sides of the stationary image.  Since we're only interested in where the two images overlap, we need to trim away the portions that stick out.
 
-Now to implement the model in Processing.  First, we'll characterize the overlapping area first by its width and height.  Second, we'll define its X and Y position as the location of its upper-left corner as it falls within the stationary image.  <<3d-quadrants>> (hopefully!) illustrates this rather abstract concept.  It presents a matrix of possible scenarios for rx and ry, as well as a simple diagram that shows how the overlap (represented by diagonal lines) is defined in that scenario.  
+Now to implement the model in Processing.  First, we'll characterize the overlapping area first by its width and height.  Second, we'll define its X and Y position as the location of its upper-left corner as it falls within the stationary image.  <<quadrants>> (hopefully!) illustrates this rather abstract concept.  It presents a matrix of possible scenarios for rx and ry, as well as a simple diagram that shows how the overlap (represented by diagonal lines) is defined in that scenario.  
 
-[[3d-quadrants]]
+[[quadrants]]
 .Possible overlap options
 image:figs/3d_quadrants.png[scaledwidth="90%"]
 
