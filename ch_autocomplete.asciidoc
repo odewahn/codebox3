@@ -61,7 +61,7 @@ The getSuggestions() function uses our encode() function to fetch the page and p
 
 [[zeitgeist-xml]]
 .XML structure for the AutoComplete library
-image:figs/zeitgeist_xml.png[scaledwidth="90%"]
+image::figs/zeitgeist_xml.png[scaledwidth="90%"]
 
 Since the actual text is help in the attribute, we use the getStringAttribute() function to pull out the data we want.  
 
