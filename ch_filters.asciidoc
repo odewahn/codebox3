@@ -2,7 +2,7 @@
 
 [[filter-example]]
 .Filters are created through matrix operations
-image:figs/filter_example.png[scaledwidth="90%"]
+image::figs/filter_example.png[scaledwidth="90%"]
 
 Color filters allow you to alter an image by ... well ... filtering out colors from an image.  While Processing has some filters built-in, it's often handy to be able to create your own custom filters.  For example, the site http://3dtv.at/Knowhow/AnaglyphComparison_en.aspx [Anaglyph Methods Comparison] details a number of different filters that are handy in creating 3D images. 
 
