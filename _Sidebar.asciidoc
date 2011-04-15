@@ -6,7 +6,7 @@ image:_Logo.gif[]
  
 == Images and Figures
 . http://vmg044.west.ora.com/codebox/upload_image.html[Upload images]
-* https://intranet.oreilly.com/confluence/display/OCO/asciidoc-add-figs[Commit the uploaded figures]
+. https://intranet.oreilly.com/confluence/display/OCO/asciidoc-add-figs[Commit uploads]
 
 == Synch
 * https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-sync-github[Push repo to github]
