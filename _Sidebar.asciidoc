@@ -5,8 +5,12 @@ image:_Logo.gif[]
 * http://powerman.name/doc/asciidoc[AsciiDoc Cheat Sheet]
  
 == Images and Figures
-. http://vmg044.west.ora.com/codebox/upload_image.html[Upload images]
+. http://vmg044.west.ora.com/initialSetup/upload_image.html[Upload images]
 . http://example.com[Commit uploaded images]
+
+== Synch
+
+. https://intranet.oreilly.com/confluence/display/OCO/asciidoc-workflow-sync-github[Push repo to github]
 
 == Publish
 . [[Update book wrapper|book]]
