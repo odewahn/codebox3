@@ -1,5 +1,7 @@
 = Codebox: Adventures with Processing
 
+include::ch_fractals.asciidoc[]
+
 include::ch_3d_anaglyph.asciidoc[]
 
 include::ch_arraylist.asciidoc[]
@@ -9,8 +11,6 @@ include::ch_autocomplete.asciidoc[]
 include::ch_exceptions.asciidoc[]
 
 include::ch_filters.asciidoc[]
-
-include::ch_fractals.asciidoc[]
 
 include::ch_qr_codes.asciidoc[]
 
