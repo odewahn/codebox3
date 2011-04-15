@@ -15,7 +15,7 @@ To get around this, you can use the Tools menu to create a new font file for you
 
 [[arraylist-create-font]]
 .Creating a font in Processing
-image:figs/arraylist_create_font.png[scaledwidth="90%"]
+image::figs/arraylist_create_font.png[scaledwidth="90%"]
 
 Then, all you have to do is select the font you want (I chose "Baskerville-Bold"; if you want to use a different font, you'll have to change the name of the font file in magic_words.pde). Notice that the file name at the bottom of the box changes as you select different options -- this is the file name you'll need to use in the sketch; Processing will add ".vlw" to the end automatically.
 
@@ -62,7 +62,7 @@ The first two methods are pretty straightforward, but the remaining methods, whi
 
 [[arraylist-target-size]]
 .Determining the size of the target
-image:figs/arraylist_target_size.png[scaledwidth="90%"]
+image::figs/arraylist_target_size.png[scaledwidth="90%"]
 
 With this diagram, it's pretty easy to write the code for detectCollision():
 
