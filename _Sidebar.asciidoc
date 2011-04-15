@@ -1,4 +1,4 @@
-image:figs/make2.gif[]
+image:_Logo.gif[]
 
 == Useful Links
 * [[TOC / Index |home]]
