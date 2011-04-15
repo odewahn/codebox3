@@ -6,13 +6,13 @@ Before jumping into the code, a bit of background. A QR code has two basic parts
 
 [[qr-code]]
 .A QR code consists of encoded data, 3 position indicators, and error correction.
-image:figs/qr_code_ano03012011.png[scaledwidth="90%"]
+image::figs/qr_code_ano03012011.png[scaledwidth="90%"]
 
 You can use a site like http://qrcode.kaywa.com/[Kaywa] to generate the code.  <<kaywa>> shows how to generate a code for "9780596510510," the ISBN for Tom Igoe's book http://www.makershed.com/ProductDetails.asp?ProductCode=0596510519[Making things Talk]:
 
 [[kaywa]]
 .Kaywa, a site for creating QR codes from plain text
-image:figs/kaywa_ano03012011.png[scaledwidth="90%"]
+image::figs/kaywa_ano03012011.png[scaledwidth="90%"]
 
 === Setting up the sketch
 The first thing to do is http://code.google.com/p/zxing/downloads/list[download ZXing] and use your Java compiler to create two files: core.jar and javase.jar.  If you're comfortable with Java, all you have to do is go into the "core" and "javase" directories and run  http://ant.apache.org[ant] to build the jar files. 
