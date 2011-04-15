@@ -1,0 +1,83 @@
+DCPS Error Log
+
+== Error 1
+
+book.xml:13: element formalpara: validity error : Syntax of value for attribute id of formalpara is not valid
+
+
+----
+<formalpara id="3d-hydrant"><title>A fire hydrant</title><para><inlinemediaobject>
+
+
+----
+== Error 2
+
+book.xml:19: element formalpara: validity error : Syntax of value for attribute id of formalpara is not valid
+
+
+----
+<formalpara id="3d-lake"><title>A lake</title><para><inlinemediaobject>
+
+
+----
+== Error 3
+
+book.xml:25: element formalpara: validity error : Syntax of value for attribute id of formalpara is not valid
+
+
+----
+<formalpara id="3d-radcliffe"><title>Radcliffe campus in Cambridge, MA</title><para><inlinemediaobject>
+
+
+----
+== Error 4
+
+book.xml:33: element xref: validity error : Syntax of value for attribute linkend of xref is not valid
+
+
+----
+<simpara>Stereoscopy is a technique of fusing two slightly offset images into a single image in a way that creates an illusion of depth.  The classic 3D technique, called anaglyphic stereoscopy, applies a red filter to the left eye&#8217;s image and a blue filter to the right eye&#8217;s image.  The offset images are then aligned on the subject and fused into a single image.  When viewed through a pair of 3D glasses, the technique can create a very effective sense of depth.  <xref linkend="3d_principles"/> should give you the basic concept:</simpara>
+
+
+----
+== Error 5
+
+book.xml:34: element formalpara: validity error : Syntax of value for attribute id of formalpara is not valid
+
+
+----
+<formalpara id="3d-principles"><title>Principles of 3D stereoscpoy</title><para><inlinemediaobject>
+
+
+----
+== Error 6
+
+book.xml:95: element xref: validity error : Syntax of value for attribute linkend of xref is not valid
+
+
+----
+<simpara>Now to implement the model in Processing.  First, we&#8217;ll characterize the overlapping area first by its width and height.  Second, we&#8217;ll define its X and Y position as the location of its upper-left corner as it falls within the stationary image.  <xref linkend="3d-quadrants"/> (hopefully!) illustrates this rather abstract concept.  It presents a matrix of possible scenarios for rx and ry, as well as a simple diagram that shows how the overlap (represented by diagonal lines) is defined in that scenario.</simpara>
+
+
+----
+== Error 7
+
+book.xml:96: element formalpara: validity error : Syntax of value for attribute id of formalpara is not valid
+
+
+----
+<formalpara id="3d-quadrants"><title>Possible overlap options</title><para><inlinemediaobject>
+
+
+----
+== Error 8
+
+book.xml:33: element xref: validity error : IDREF attribute linkend references an unknown ID "3d_principles"
+
+
+----
+<simpara>Stereoscopy is a technique of fusing two slightly offset images into a single image in a way that creates an illusion of depth.  The classic 3D technique, called anaglyphic stereoscopy, applies a red filter to the left eye&#8217;s image and a blue filter to the right eye&#8217;s image.  The offset images are then aligned on the subject and fused into a single image.  When viewed through a pair of 3D glasses, the technique can create a very effective sense of depth.  <xref linkend="3d_principles"/> should give you the basic concept:</simpara>
+
+
+----
+No errors found
