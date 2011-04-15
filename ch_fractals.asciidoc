@@ -60,7 +60,7 @@ After the library is installed, restart Processing.  Now we're ready to talk a l
 Whew!  That was a lot of overview material, but now that controlP5 is installed we're ready to use Processing to implement the IFS system described earlier. Start Processing, and then paste the following code into the text editor:
 
 ----
-include:code/fractal_barnsley.pde[]
+include::code/fractal_barnsley.pde[]
 ----
 
 There's one thing you'll probably notice as you go through the example: it contains multiple class definitions at the end of the file. Fire up the code and you should see something very similar to the video at the beginning of this post.  You can click the radio buttons to select one from among a variety of different IFS fractals, and can also use the knob controller to set the number of iterations.
