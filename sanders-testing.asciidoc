@@ -1,6 +1,0 @@
-This is only
---------------
-
-*A test*
-
-_I like tests_
