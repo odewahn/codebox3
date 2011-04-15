@@ -6,5 +6,5 @@ This is TOC page for Codebox: Adventures with Processing, an ebook by Andrew Ode
 * [[Save Sensor Data in a Google Spreadsheets|ch_save_sensor_data]]
 * [[Create an ArrayList of Objects|ch_arraylist]]
 * [[Amuse Yourself with Google Autocomplete|ch_autocomplete]]
-* [[Exception handling|handling|ch_exceptions]]
+* [[Exception handling|ch_exceptions]]
 * [[Color Filters|ch_filters]]
