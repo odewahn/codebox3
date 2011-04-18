@@ -1,4 +1,4 @@
-image:_Logo.png[]
+image:_Logo.png[align="center"]
 
 == Useful Links
 * [[TOC / Index |home]]
