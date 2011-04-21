@@ -1,7 +1,5 @@
 = Codebox: Adventures with Processing
 
-include::image_test.asciidoc[]
-
 include::ch_fractals.asciidoc[]
 
 include::ch_3d_anaglyph.asciidoc[]
