@@ -1,0 +1,8 @@
+
+[[barnsley]]
+.The barnsley fern
+image::figs/frac_barnsley.png[scaledwidth="90%"]
+
+[[barnsley1]]
+.The barnsley fern
+image:figs/frac_barnsley.png[scaledwidth="90%"]
