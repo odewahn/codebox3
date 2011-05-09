@@ -13,7 +13,7 @@ After a few hundred iterations, you'll begin to see a ghostly outline of a fern.
 
 [[barnsley]]
 .The barnsley fern
-image::figs/frac_barnsley.png[scaledwidth="90%"]
+image:figs/frac_barnsley.png[scaledwidth="90%"]
 
 Let's unpack the details a bit more.  A transformation is a formula that...well, transforms one point into another point.  Just like the translate, rotate, and scale transformations described on page 104 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803&Click=37845[Getting Started with Processing], the transformations in the IFS system map a point to a new location by applying a http://en.wikipedia.org/wiki/Transformation_matrix[transformation matrix], which is a shorthand way of representing a set of formulas.
 
@@ -28,7 +28,6 @@ As an example, here's the 3rd transformation matrix for the Barnsley Fern that w
 [[frac-matrix-example]]
 .The matrix for the Barnsley fern
 image::figs/frac_matrix_example.png[scaledwidth="90%"]
-
 
 The final column in the IFS matrix, p, represents the frequency with which the transformation is selected.  So, for the Barnsley fern, transformation f1 is selected 1% of the time, f2 is selected 85% of the time, and f3 and f4 are each selected 7% of the time.  If this is a bit confusing, think of as though you filled up a bag with 100 marbles, each labelled each with one of these functions.  You'd have 1 marble for f4, 85 for f2, 7 for f3, and 7 for f4.  At each iteration, you'd randomly grab a marble from the bag, look at it's label, apply the corresponding transformation, and then drop the marble backinto the bag.  
 

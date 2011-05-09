@@ -1,3 +1,5 @@
+== Create an ArrayList of Objects
+
 This sketch illustrates how to create and manage a list of interactive objects. Whether you're writing games, http://processing.org/learning/topics/smokeparticlesystem.html[particle systems], or an Arduino controlled magic show, these are tools you'll use again and again as you go further with Processing.
 
 == Set up the sketch

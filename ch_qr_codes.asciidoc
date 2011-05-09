@@ -4,7 +4,7 @@ This Codebox shows you how to use the http://code.google.com/p/zxing/[ZXing] lib
 === About QR Codes
 Before jumping into the code, a bit of background. A QR code has two basic parts -- the three positioning elements, which are the large square blocks at the three corners, and the data elements, which is everything else. The positioning elements help the software determine the QR code's location and orientation.  The data elements represent the encoded data.  For example, it could be a product number, a URL, or (in our case here) an ISBN.  The code also has some information used for error correction.  <<qr-code>> image should give you the basic idea:
 
-[[qr-code]
+[[qr-code]]
 .A QR code consists of encoded data, 3 position indicators, and error correction.
 image::figs/qr_code_ano03012011.png[scaledwidth="90%"]
 

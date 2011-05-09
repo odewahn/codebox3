@@ -1,4 +1,3 @@
-[[save_sensor_data]]
 == Save sensor data using Google Spreadsheets
 
 The "Hello Arduino" section in Chapter 11 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing] shows how to read data into Processing from Arduino. In a nutshell, the Arduino code (example 11-6 in the book) reads data from a light sensor and writes it out to the serial port. The section then goes on to describe a number of increasingly sophisticated sketches that retrieve and visualize the sensor data using Processing's http://www.processing.org/reference/libraries/serial/index.html[Serial] library.
