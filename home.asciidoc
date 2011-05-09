@@ -1,4 +1,4 @@
-This is TOC page for Codebox: Adventures with Processing, an *ebook* by Andrew Odewahn.  It's also a testbed for working with git and AsciiDoc.  If you want to add a new chapter, just put the chapter name into the bullet list and save the doc.  You can then click on the link to start writing and editing.  <<3d-image>>.
+This is TOC page for Codebox: Adventures with Processing, an *ebook* by Andrew Odewahn.  It's also a testbed for working with git and AsciiDoc.  If you want to add a new chapter, just put the chapter name into the bullet list and save the doc.  You can then click on the link to start writing and editing.
 
 * [[Create a fractal menagerie|ch_fractals]]
 * [[QR Codes|ch_qr_codes]]
