@@ -13,7 +13,7 @@ After a few hundred iterations, you'll begin to see a ghostly outline of a fern.
 
 [[barnsley]]
 .The barnsley fern
-image:figs/frac_barnsley.png[scaledwidth="90%"]
+image::figs/frac_barnsley.png[scaledwidth="90%"]
 
 Let's unpack the details a bit more.  A transformation is a formula that...well, transforms one point into another point.  Just like the translate, rotate, and scale transformations described on page 104 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803&Click=37845[Getting Started with Processing], the transformations in the IFS system map a point to a new location by applying a http://en.wikipedia.org/wiki/Transformation_matrix[transformation matrix], which is a shorthand way of representing a set of formulas.
 
