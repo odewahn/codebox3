@@ -35,7 +35,7 @@ try {
    ...
 }
 ----
-Since exceptions aren't covered in http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803 [Getting Started with Processing], let me answer a few general questions you might have:
+Since exceptions aren't covered in http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing], let me answer a few general questions you might have:
 
 * What do you mean by suspect code?  Initially, you might think all code is suspect, but exception handling is mostly used in a few key circumstances, such as reading or writing to a file, pulling data across a network, or communicating with a device (like a serial port).  In fact, many libraries require you to enclose certain methods within a try-catch block or the code won't compile at all.  For example, if you removed the try block from the http://blog.makezine.com/archive/2010/12/save_sensor_data_to_google_spreadsh.html[google spreadsheet code], the program wouldn't even compile.  Library designers do this to force programmers into good habits.
 

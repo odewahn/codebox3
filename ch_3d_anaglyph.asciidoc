@@ -1,6 +1,6 @@
 == 3D Photography Using Anaglyphic Stereoscopy
 
-This Codebox describes how to create 3D images using anaglyphic stereography.  To see the images in 3D, you'll need to get a pair of "http://www.amazon.com/3D-Glasses-Blue-Anaglyph-Pair/dp/B001D5VCBC/ref=sr_1_33?ie=UTF8&s=toys-and-games&qid=1275613889&sr=8-33[Red/Blue glasses] on Amazon, or alternatively, http://www.labnol.org/home/make-3d-glasses/13776/[hack up a pair yourself].  Once you have the glasses, you'll be able to use the Processing script at the bottom of the page to create and view 3D photographs like these:
+This Codebox describes how to create 3D images using anaglyphic stereography.  To see the images in 3D, you'll need to get a pair of http://www.amazon.com/3D-Glasses-Blue-Anaglyph-Pair/dp/B001D5VCBC/ref=sr_1_33?ie=UTF8&s=toys-and-games&qid=1275613889&sr=8-33[Red/Blue glasses] on Amazon, or alternatively, just http://www.labnol.org/home/make-3d-glasses/13776/[hack up a pair yourself].  Once you have the glasses, you'll be able to use the Processing script at the bottom of the page to create and view 3D photographs like these:
 
 [[3d-hydrant]]
 .A fire hydrant
