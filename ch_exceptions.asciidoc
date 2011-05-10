@@ -4,9 +4,16 @@ Sadly, we live in an imperfect world. Nice little sketches get started with no A
 
 So, how does Processing let you know when something has gone really wrong?  In general (unless something has gone hugely wrong!), you'll start the sketch and then see something like <<exceptions-ide>>
 
-[[exceptions-ide]]
-.An exception, as shown in the Processing IDE
-image::figs/exceptions_ide.png[scaledwidth="90%", float="none"]
+++++++++++++++++++++++++++++++++++++++
+<figure id="exceptions-ide" float="none">
+<title>An exception, as shown in the Processing IDE</title>
+<mediaobject>
+  <imageobject>
+  <imagedata fileref="figs/exceptions_ide.png" width="90%" scalefit="1"/>
+  </imageobject>
+</mediaobject>
+</figure>
+++++++++++++++++++++++++++++++++++++++
 
 Notice all the red error messages in the message area, which is where Processing tells you about what's gone wrong.  In this case, the error is  PortInUseException(), which, if you start Googling, you'll find has something of a checkered reputation in Processing.  (More on this later.)  The message also tells you on which line the error was thrown.  Additionally, the offending line is highlighted in yellow in the text editor.  Depending on where the error occurs, the sketch window may or may not appear, and even if it is visible, it almost certainly won't do what you expect.  
 
