@@ -1,9 +1,6 @@
 == Create an ArrayList of Objects
 
-This sketch illustrates how to create and manage a list of interactive objects. Whether you're writing games, http://processing.org/learning/topics/smokeparticlesystem.html[particle systems], or an Arduino controlled magic show, these are tools you'll use again and again as you go further with Processing.
-
-== Set up the sketch
-First things first -- let's get the sketch up and running. You'll need two files for this project: magic_words.pde.  Fire up Processing and paste the following code into the main window:
+This sketch illustrates how to create and manage a list of interactive objects. Whether you're writing games, http://processing.org/learning/topics/smokeparticlesystem.html[particle systems], or an Arduino controlled magic show, these are tools you'll use again and again as you go further with Processing.  You'll need the the file https://github.com/odewahn/codebox2/raw/master/code/magic_words.pde[magic_words.pde].  Fire up Processing and paste it into the main window, like this:
 
 ----
 include::code/magic_words.pde[]

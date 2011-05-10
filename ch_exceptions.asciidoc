@@ -2,11 +2,11 @@
 
 Sadly, we live in an imperfect world. Nice little sketches get started with no Arduino plugged in, numbers are divided by zero, people run with scissors, and so on and so forth.  In Processing, conditions like these are called exceptions, and this post provides a gentle introduction on how to deal with (or, more officially, handle) them.  
 
-So, how does Processing let you know when something has gone really wrong?  In general (unless something has gone hugely wrong!), you'll start the sketch and then see something like the following figure:
+So, how does Processing let you know when something has gone really wrong?  In general (unless something has gone hugely wrong!), you'll start the sketch and then see something like <<exceptions-ide>>
 
 [[exceptions-ide]]
 .An exception, as shown in the Processing IDE
-image::figs/exceptions_ide.png[scaledwidth="90%"]
+image::figs/exceptions_ide.png[scaledwidth="90%", float="none"]
 
 Notice all the red error messages in the message area, which is where Processing tells you about what's gone wrong.  In this case, the error is  PortInUseException(), which, if you start Googling, you'll find has something of a checkered reputation in Processing.  (More on this later.)  The message also tells you on which line the error was thrown.  Additionally, the offending line is highlighted in yellow in the text editor.  Depending on where the error occurs, the sketch window may or may not appear, and even if it is visible, it almost certainly won't do what you expect.  
 
@@ -57,7 +57,7 @@ Since our code is blowing up on the line "port = new Serial(this, arduinoPort, 9
 include::code/exception_example.pde[]
 ----
 
-You should see something like the following figure when you run this code.
+You should see something like <<exceptions-working>> when you run this code.
 
 [[exceptions-working]]
 .Exception handling creates a more robust system
@@ -101,7 +101,7 @@ A bit of Googling indicated that Macs have a couple of processes running by defa
 
 However, my code was still blowing up, but for a different error: gnu.io.PortInUseException.  "Ha!," I though, I can just catch that one.  But, this didn't work, either. Googling around, I discovered that there seems to be a weird bug on OS X that makes catching this exception problematic, and that you have to reinstall or delete various portions of the Serial library to make them work. So, that didn't work either. Finally, I just  settled on catching the most generic Exception to get it to work.
 
-Then, I wanted to do a bit more about how you'd catch errors while the sketch was running.  Specifically, I wanted to handle the case where the Arduino is plugged in, the sketch starts running, and the you unplug it mid-stream.  However, when I tried this, I got this error message which seemed to come from the operating system:
+Then, I wanted to do a bit more about how you'd catch errors while the sketch was running.  Specifically, I wanted to handle the case where the Arduino is plugged in, the sketch starts running, and the you unplug it mid-stream.  However, when I tried this, I got this error message which seemed to come from the operating system, as show in <<exceptions-usb-unplugged>>:
 
 [[exceptions-usb-unplugged]]
 .Some error conditions are caught before they reach Procesing

@@ -6,11 +6,11 @@ As you'll see from the site, filters are basically mathematical transformations 
 
 [[filter-example]]
 .Filters are created through matrix operations
-image::figs/filter_example.png[scaledwidth="90%"]
+image::figs/filter_example.png[scaledwidth="90%", float="none"]
 
 First, though, a quick review of the math.  A http://simple.wikipedia.org/wiki/Matrix_(mathematics)[matrix] is a 2 dimensional array of numbers called elements.  Matrices are used in many different applications, representing sets of equations, transformations to 3D objects, and color filters (as in this example).  
 
-A matrix is usually characterized by its dimensions: the number of elements in its rows (the numbers going across ) and columns (the numbers going up and down).  By convention, the number of rows always comes first. The following figure shows 2 matrices.  On the left is a 2 row by 3 matrix, which is generally just called a 2x3 matrix.  On the right is a 3 row by 2 column matrix, also called a 3x2 matrix:
+A matrix is usually characterized by its dimensions: the number of elements in its rows (the numbers going across ) and columns (the numbers going up and down).  By convention, the number of rows always comes first. <<matrices-example>> shows 2 matrices.  On the left is a 2 row by 3 matrix, which is generally just called a 2x3 matrix.  On the right is a 3 row by 2 column matrix, also called a 3x2 matrix:
 
 [[matrices-example]]
 .Matrices
@@ -18,7 +18,7 @@ image::figs/matrices_example.png[scaledwidth="90%"]
 
 To multiply two matrices together (let's call them matrix A and matrix B), the number of columns in matrix A must equal the number of rows in matrix B.  This is critical -- if this isn't true, then the multiplication is not defined.  (This is sort of like dividing by zero -- it's simply impossible.)  
 
-Assuming this criteria is met, the product of the two matrices (lets call it matrix C) will have the same number of rows as matrix A and the same number of columns as matrix B. The elements in matrix C are equal to the sum of the products of the corresponding column element in A times the row elements in B.  This is a bit tricky, but the following figure should (hopefully!) make this a bit clearer:
+Assuming this criteria is met, the product of the two matrices (lets call it matrix C) will have the same number of rows as matrix A and the same number of columns as matrix B. The elements in matrix C are equal to the sum of the products of the corresponding column element in A times the row elements in B.  This is a bit tricky, but <<matrix-operations>> should (hopefully!) make this a bit clearer:
 
 [[matrix-operations]]
 .Matrix multiplication operation
@@ -36,7 +36,7 @@ So, with the basic math out of the way, we're ready to write the filter code.  T
 position in array = x + IMAGE_WIDTH * y
 ----
 
-The following figure should help illustrate most of the concepts at work here:
+<<filter-pixel-layout>> should help illustrate most of the concepts at work here:
 
 [[filter-pixel-layout]]
 .Mapping pixels into a one-dimensional array

@@ -40,7 +40,7 @@ If you "View Source" on your web browser, you'll see some XML that looks somethi
 We'll use Processing's XMLElement() library to read this XML data to create the scrolling text.
 
 === Set up the Sketch
-First, though, let's get the sketch running.  Since we're using the http://www.sojamo.de/libraries/controlP5/[controlP5] library to get the query phrase, you'll need to have that library installed and configured.  (If you don't, the controlP5 section of http://blog.makezine.com/archive/2010/10/codebox_create_a_fractal_menagerie.html[Codebox: Create a fractal menagerie] will tell you how to set it up.)  Grab the sketch's source code from here:
+First, though, let's get the sketch running.  Since we're using the http://www.sojamo.de/libraries/controlP5/[controlP5] library to get the query phrase, you'll need to have that library installed and configured.  (If you don't, the controlP5 section of http://blog.makezine.com/archive/2010/10/codebox_create_a_fractal_menagerie.html[Codebox: Create a fractal menagerie] will tell you how to set it up.)  Grab the sketch's source code from https://github.com/odewahn/codebox2/raw/master/code/zeitgeist.pde[zeitgeist.pde]:
 
 ----
 include::code/zeitgeist.pde[]
@@ -57,7 +57,7 @@ So, how does this thing work?  There are a few key elements:
 
 So, let's talk about how to grab the data from the API.  Processing's loadStrings() function allows you to grab the text of any URL, so all we have to do is present the Autocomplete API with a properly formatted query.  To do this, we'll use Java's URLEncoder library (remember, everything you can use in Java is fair game for Processing) to write the encode() function, which http://en.wikipedia.org/wiki/Percent-encoding[encodes] the text entered into the userQuery box.
 
-The getSuggestions() function uses our encode() function to fetch the page and parse the XML results.  The function uses the http://processing.org/reference/XMLElement.html[XMLElement()] object to work with the results.  Like most XML libraries, this one uses a "family tree" like syntax to allow you to access the various data elements. As shown in the next figure, the suggestion data is the first child element (suggestion) under of root element's children (CompleteSuggestion).
+The getSuggestions() function uses our encode() function to fetch the page and parse the XML results.  The function uses the http://processing.org/reference/XMLElement.html[XMLElement()] object to work with the results.  Like most XML libraries, this one uses a "family tree" like syntax to allow you to access the various data elements. As shown in the next figure, the suggestion data is the first child element (suggestion) under of root element's children (CompleteSuggestion).  <<zeitgeist-xml>> should give you an idea of what the structure looks like.
 
 [[zeitgeist-xml]]
 .XML structure for the AutoComplete library

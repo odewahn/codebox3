@@ -1,6 +1,6 @@
 == 3D Photography Using Anaglyphic Stereoscopy
 
-This Codebox describes how to create 3D images using anaglyphic stereography.  To see the images in 3D, you'll need to get a pair of "http://www.amazon.com/3D-Glasses-Blue-Anaglyph-Pair/dp/B001D5VCBC/ref=sr_1_33?ie=UTF8&s=toys-and-games&qid=1275613889&sr=8-33[Red/Blue glasses] on Amazon, or alternatively, http://www.labnol.org/home/make-3d-glasses/13776/[hack up a pair yourself].  Once you have the glasses, you'll be able to use the Processing script at the bottom of the page to create and view 3D photographs like <<hydrant>>, <<lake>>, and <<radcliffe>> :
+This Codebox describes how to create 3D images using anaglyphic stereography.  To see the images in 3D, you'll need to get a pair of "http://www.amazon.com/3D-Glasses-Blue-Anaglyph-Pair/dp/B001D5VCBC/ref=sr_1_33?ie=UTF8&s=toys-and-games&qid=1275613889&sr=8-33[Red/Blue glasses] on Amazon, or alternatively, http://www.labnol.org/home/make-3d-glasses/13776/[hack up a pair yourself].  Once you have the glasses, you'll be able to use the Processing script at the bottom of the page to create and view 3D photographs like <<hydrant>> and <<lake>>.
 
 [[hydrant]]
 .A fire hydrant
@@ -10,9 +10,6 @@ image::figs/3d_hydrant.png[scaledwidth="90%"]
 .A lake
 image::figs/3d_lake.png[scaledwidth="90%"]
 
-[[radcliffe]]
-.Radcliffe campus in Cambridge, MA
-image::figs/3d_radcliffe.png[scaledwidth="90%"]
 
 === Stereoscopy in a Nutshell
 Stereoscopy is a technique of fusing two slightly offset images into a single image in a way that creates an illusion of depth.  The classic 3D technique, called anaglyphic stereoscopy, applies a red filter to the left eye's image and a blue filter to the right eye's image.  The offset images are then aligned on the subject and fused into a single image.  When viewed through a pair of 3D glasses, the technique can create a very effective sense of depth.  <<principles>> should give you the basic concept:

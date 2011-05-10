@@ -20,10 +20,10 @@ Let's unpack the details a bit more.  A transformation is a formula that...well,
 The table that defines the IFS system provides the values used in the matrices.  Columns a,b,d,d,e, and f represent the various elements in a matrix. (I'll talk about column p in a second.)  The next figure shows how to translate a row in an IFS system into a matrix:
 
 [[frac-matrix]]
-.The matric for the Barnsley fern
+.The matrix for the Barnsley fern
 image::figs/frac_matrix.png[scaledwidth="90%"]
 
-As an example, here's the 3rd transformation matrix for the Barnsley Fern that was shown earlier:
+As an example, <<frac-matrix-example>> shows the 3rd transformation matrix for the Barnsley Fern in <<barnsley>>.
 
 [[frac-matrix-example]]
 .The matrix for the Barnsley fern
@@ -32,7 +32,7 @@ image::figs/frac_matrix_example.png[scaledwidth="90%"]
 The final column in the IFS matrix, p, represents the frequency with which the transformation is selected.  So, for the Barnsley fern, transformation f1 is selected 1% of the time, f2 is selected 85% of the time, and f3 and f4 are each selected 7% of the time.  If this is a bit confusing, think of as though you filled up a bag with 100 marbles, each labelled each with one of these functions.  You'd have 1 marble for f4, 85 for f2, 7 for f3, and 7 for f4.  At each iteration, you'd randomly grab a marble from the bag, look at it's label, apply the corresponding transformation, and then drop the marble backinto the bag.  
 
 === controlP5
-Now that you understand the basic idea of the IFS fractals, let's take a quick look at http://www.sojamo.de/libraries/controlP5/[controlP5], a code library by http://www.sojamo.de/[Andreas Schlegel] for creating familiar user input controls, like these:
+Now that you understand the basic idea of the IFS fractals, let's take a quick look at http://www.sojamo.de/libraries/controlP5/[controlP5], a code library by http://www.sojamo.de/[Andreas Schlegel] for creating familiar user input controls, like the ones in <<frac-controlp5>>.
 
 [[frac-controlp5]]
 .controlp5 controls
@@ -40,7 +40,7 @@ image::figs/frac_controlp5.png[scaledwidth="90%"]
 
 We're going to use the "knob" control to allow the user to set the number of iterations used to create the drawing, and the "radio" control to select which IFS system to display.  
 
-Before we can use the library in our sketch, we have to get it installed.  The first step is to make sure you have a directory called "libraries" in your Sketchbook directory. You can find the Sketchbook directory by opening the Processing's Preferences window. You'll see the directory name at the top:
+Before we can use the library in our sketch, we have to get it installed.  The first step is to make sure you have a directory called "libraries" in your Sketchbook directory. You can find the Sketchbook directory by opening the Processing's Preferences window. You'll see the directory name at the top, as shown in <<frac-prefs>>
 
 [[frac-prefs]]
 .Processing preferences
@@ -48,7 +48,7 @@ image::figs/frac_preferences.png[scaledwidth="90%"]
 
 After you've located the main directory, use a tool like Window's Explorer, Mac's finder, or UNIX's trusty terminal to see if there is a subdirectory called "libraries." If so, you're all set. If not, then create the subdirectory (be sure to name it "libraries").
 
-Next, you're ready to install controlP5.  Go to the http://www.sojamo.de/libraries/controlP5/[controlP5 main page] and click the link to download the latest version of the library.  (You'll find the link in the green box at the top, center of the screen.)  Once you've downloaded the file, uncompress it and copy the files into your "libraries" subdirectory. Restart Processing, and you should see the library appear under the "Sketch -> Import Library" menu item.
+Next, you're ready to install controlP5.  Go to the http://www.sojamo.de/libraries/controlP5/[controlP5 main page] and click the link to download the latest version of the library.  (You'll find the link in the green box at the top, center of the screen.)  Once you've downloaded the file, uncompress it and copy the files into your "libraries" subdirectory. Restart Processing, and you should see the library appear under the "Sketch -> Import Library" menu item.  This is illustrated in <<frac-install>>.
 
 [[frac-install]]
 .Installing the controlp5 library
