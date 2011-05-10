@@ -4,10 +4,16 @@ Color filters allow you to alter an image by ... well ... filtering out colors f
 
 As you'll see from the site, filters are basically mathematical transformations that are applied to the red, green, and blue components of the pixels in an image.  To create a filter like the ones on the stereo anaglyph site, we need to pull each pixel in the original image, apply a matrix operation to its color components, and then use this new value in the corresponding pixel in the new image. This Codebox shows you how to create your own filters like the ones shown in <<filter-example>>.
 
-[[filter-example]]
-.Filters are created through matrix operations
-image::figs/filter_example.png[scaledwidth="90%"]
-
+++++++++++++++++++++++++++++++++++++++
+<figure id="filter-example" float="none">
+<title>Filters are created through matrix operations</title>
+<mediaobject>
+  <imageobject>
+  <imagedata fileref="figs/filter_example.png" width="90%" scalefit="1"/>
+  </imageobject>
+</mediaobject>
+</figure>
+++++++++++++++++++++++++++++++++++++++
 
 First, though, a quick review of the math.  A http://simple.wikipedia.org/wiki/Matrix_(mathematics)[matrix] is a 2 dimensional array of numbers called elements.  Matrices are used in many different applications, representing sets of equations, transformations to 3D objects, and color filters (as in this example).  
 
