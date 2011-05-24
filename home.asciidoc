@@ -8,7 +8,3 @@ This is TOC page for Codebox: Adventures with Processing, an *ebook* by Andrew O
 * [[Amuse Yourself with Google Autocomplete|ch_autocomplete]]
 * [[Exception handling|ch_exceptions]]
 * [[Color Filters|ch_filters]]
-
-
-image::figs/test.svg[ scaledwidth="90%"]
-
