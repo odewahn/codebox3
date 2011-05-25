@@ -9,7 +9,7 @@ As you'll see from the site, filters are basically mathematical transformations 
 <title>Filters are created through matrix operations</title>
 <mediaobject>
   <imageobject>
-  <imagedata fileref="figs/filter_example.png" width="90%" scalefit="1"/>
+  <imagedata fileref="attachments/filter_example.png" width="90%" scalefit="1"/>
   </imageobject>
 </mediaobject>
 </figure>
@@ -21,7 +21,8 @@ A matrix is usually characterized by its dimensions: the number of elements in i
 
 [[matrices-example]]
 .Matrices
-image::figs/matrices_example.png[scaledwidth="90%"]
+
+image::attachments/matrices_example.png[scaledwidth="90%"]
 
 To multiply two matrices together (let's call them matrix A and matrix B), the number of columns in matrix A must equal the number of rows in matrix B.  This is critical -- if this isn't true, then the multiplication is not defined.  (This is sort of like dividing by zero -- it's simply impossible.)  
 
@@ -29,13 +30,15 @@ Assuming this criteria is met, the product of the two matrices (lets call it mat
 
 [[matrix-operations]]
 .Matrix multiplication operation
-image::figs/matrix_operations.png[scaledwidth="90%"]
+
+image::attachments/matrix_operations.png[scaledwidth="90%"]
 
 The following sketch illustrates how to do the operation in Processing:
 
-----
-include::code/matrix_mult.pde[]
-----
+[NOTE]
+====
+You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/matrix_mult.pde[matrix_mult.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
+====
 
 So, with the basic math out of the way, we're ready to write the filter code.  The only remaining wrinkle is that images in Processing are held in one dimensional arrays of colors, rather than 2 dimensional arrays of (x,y) coordinates, as explained in this great http://processing.org/learning/pixels/[Images and Pixels] tutorial by Daniel Shiffman.  In the tutorial, he gives a nice formula that you can use to map an (x,y) coordinate to the position in the image array:
 
@@ -47,10 +50,13 @@ position in array = x + IMAGE_WIDTH * y
 
 [[filter-pixel-layout]]
 .Mapping pixels into a one-dimensional array
-image::figs/filter_pixel_layout.png[scaledwidth="90%"]
+
+image::attachments/filter_pixel_layout.png[scaledwidth="90%"]
 
 Without further ado, here's the code to implement the filter:
 
-----
-include::code/filter.pde[]
-----
+[NOTE]
+====
+You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/filter.pde[filter.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
+====
+

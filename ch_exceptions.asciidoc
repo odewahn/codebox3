@@ -9,7 +9,7 @@ So, how does Processing let you know when something has gone really wrong?  In g
 <title>An exception, as shown in the Processing IDE</title>
 <mediaobject>
   <imageobject>
-  <imagedata fileref="figs/exceptions_ide.png" width="90%" scalefit="1"/>
+  <imagedata fileref="attachments/exceptions_ide.png" width="90%" scalefit="1"/>
   </imageobject>
 </mediaobject>
 </figure>
@@ -60,15 +60,17 @@ Whew. Enough theory. Let's return to the original problem of preventing our code
 
 Since our code is blowing up on the line "port = new Serial(this, arduinoPort, 9600);", this is a pretty obvious place to put a try-catch block.  What we want the code to do is test if there are any exceptions at all on this line (we don't really care what), and if there are, display a "Plug in Arduino" message.  As soon as an Arduino is plugged in, we want to start displaying the counter and the current value from the serial port.  Here's a revised version of the code:
 
-----
-include::code/exception_example.pde[]
-----
+[NOTE]
+====
+You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/exception_example.pde[exception_example.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
+====
 
 You should see something like <<exceptions-working>> when you run this code.
 
 [[exceptions-working]]
 .Exception handling creates a more robust system
-image::figs/exceptions_working.png[scaledwidth="90%"]
+
+image::attachments/exceptions_working.png[scaledwidth="90%"]
 
 So, what's happening here?  The first thing you'll notice is that I moved the offending line out of the setup() method and into the draw() method.  This makes sure that the sketch will repeatedly test if the Arduino is found; doing the test in setup() would mean that it only happens once, when the sketch starts.  Next, I've created a flag called ardinoOK -- if this flag is false, we want to try to grab the port and display the error message.  If the flag it true true, then we want to read the port and display the values.  Finally, I've embedded the "port = new Serial(this, arduinoPort, 9600);" line inside a try-catch block.  If the command succeeds, then we set arduinoOK to true.  If an exception occurs, we catch it with the "catch (Exception e)" block and set arduinoOK to false.  Since this code is inside draw(), it repeats this logic over and over.  Voila!
 
@@ -111,8 +113,9 @@ However, my code was still blowing up, but for a different error: gnu.io.PortInU
 Then, I wanted to do a bit more about how you'd catch errors while the sketch was running.  Specifically, I wanted to handle the case where the Arduino is plugged in, the sketch starts running, and the you unplug it mid-stream.  However, when I tried this, I got this error message which seemed to come from the operating system, as show in <<exceptions-usb-unplugged>>:
 
 [[exceptions-usb-unplugged]]
-.Some error conditions are caught before they reach Procesing
-image::figs/exceptions_usb_unplugged.png[scaledwidth="90%"]
+.Some error conditions are caught before they reach Processing
+
+image::attachments/exceptions_usb_unplugged.png[scaledwidth="90%"]
 
 Since it was handled higher up in the food chain, the error never flowed down into Processing as an exception, so the sketch just hummed along merrily.  Hmmm, I thought.  So, a bit of Googling revealed that it's very bad to do what I planned, and that it can lead to all sorts of problems. So, I guess the Mac has safeguards built in to prevent problems downstream.  I guess I should be thankful, but it bummed me out for this example. 
 

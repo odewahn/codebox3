@@ -6,7 +6,8 @@ This Codebox shows you how to save this sensor data to a Google Spreadsheet. The
 
 [[reading-a-sensor]]
 .Reading sensor data from an arduino and writing it to a Google Spreadsheet
-image::figs/ano_sensor_spreadshee_120910.png[scaledwidth="90%"]
+
+image::attachments/ano_sensor_spreadshee_120910.png[scaledwidth="90%"]
 	
 The sketch relies on the http://code.google.com/p/gdata-java-client/[Google API Client Library for Java], which is a set of code libraries for interacting with various Google's services (not just Spreadsheets). In researching this article, I found Processing guru http://blog.blprnt.com/about[Jer Thorpe's] article http://blog.blprnt.com/blog/blprnt/open-science-h1n1-processing-and-the-google-spreadsheet-api[Open Science, H1N1, Processing, and the Google Spreadsheet API] a great inspiration. While it's based on an older version of the API (version 1.0, while the APIs are now up to version 3.0), it's a great introduction to interacting with Google. Thanks, Jer!
 
@@ -16,16 +17,17 @@ The first step in the project is to set up a Google Spreadsheet.  To do this, yo
 === Set up the sketch
 Next, a bit of housekeeping. The Google data client libraries use http://onjava.com/pub/a/onjava/excerpt/javaian5_chap04/index.html[generics] and other goodies introduced in Java 1.5, so you may need to update your version of Processing to release 0136 or higher. If you're not sure which version you have,  http://processing.org/download/[download the latest version of Processing] to make sure. Otherwise, you're in for a lot of head scratching. Once you've confirmed you're at release 0136+, download the Java client library http://code.google.com/p/gdata-java-client/downloads/detail?name=gdata-samples.java-1.40.0.zip&can=1&q=[gdata-samples.java-1.40.0.zip]
 
-[[SENSOR-NOTE]]
-----
-This is a slightly older version of the libraries -- there are some problems with the most recent version hanging on a Mac, so people recommended downgrading until Google fixes the problem.]   You will also need <a href="http://code.google.com/p/guava-libraries/downloads/detail?name=guava-r07.zip">Guava</a>, the Google Collection library.
-----
+[NOTE]
+====
+This is a slightly older version of the libraries -- there are some problems with the most recent version hanging on a Mac, so people recommended downgrading until Google fixes the problem.]   You will also need http://code.google.com/p/guava-libraries/downloads/detail?name=guava-r07.zip[Guava], the Google Collection library.
+====
 
 Once you've downloaded and unzipped the files, fire up Processing and paste the following code into the sketch area:
 
-----
-include::code/google_spreadsheet_writer.pde[]
-----
+[NOTE]
+====
+You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/google_spreadsheet_writer.pde[google_spreadsheet_writer.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
+====
 
 Next, add all of the following files to your project from the libraries you downloaded earlier (use the Sketch -> Add files menu item):
 
@@ -47,10 +49,10 @@ Once you're done, fire up the sketch. Assuming you're running the Arduino code f
 === Discussion
 I'll be honest: the hardest part of this project is getting all the libraries set up correctly.  Once you do, there's really not that much to the code itself.  The http://code.google.com/apis/spreadsheets/data/2.0/developers_guide_java.html[Developer's Guide: Java] documentation does a good job describing most of what you need to know.  
 
-[[NOTE2]]
-----
+[NOTE]
+====
 Note that this is an older version of the documentation. I found it much more clearer than the most recent version, which you can find at http://code.google.com/apis/spreadsheets/data/3.0/developers_guide.html[Developer's Guide (v3.0)].
-----
+====
 
 As you'll see in the setup() method, the sketch begins by authenticating your credentials.  Assuming you check out, it then pulls a list of all your spreadsheets and finds the one that has the same title as that defined in the spreadsheet_name variable.  Finally, it pulls out the first worksheet (these are the various tabs in the spreadsheet) and saves it for future use. From there, the sketch drops into the draw() method, which uses a timer to periodically call the transmit() function.
 
@@ -58,6 +60,7 @@ transmit() is where most of the work happens. It starts by creating a couple of 
 
 [[col-header-map]]
 .Column headers map to vairables in Processing
-image::figs/ano_spreadsheet_col_header_map_121010.png[scaledwidth="90%"]
+
+image::attachments/ano_spreadsheet_col_header_map_121010.png[scaledwidth="90%"]
 
 Once you get this sketch working, the possibilities are endless. Well, OK, they're not endless. They're finite. But, there are a lot of possibilities, nevertheless.  Enjoy!
