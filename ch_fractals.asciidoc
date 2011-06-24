@@ -2,19 +2,38 @@
 
 A http://en.wikipedia.org/wiki/Fractal[fractal], according to Wikipedia, is a "a rough or fragmented geometric shape that can be split into parts, each of which is (at least approximately) a reduced-size copy of the whole."  One of the cool things about fractals is that they use really simple processes to create really complex, natural looking objects, like plants, clouds, flames, and so forth.  This Codebox will show you how to create a fractal menagerie for viewing a few different styles of fractals.
 
+////
+
+This next paragraph seems odd to me. Isn't this the first chapter? If so, it seems strange to say that you'll continue expanding on the OOP concepts. Wasn't the Magic Wand first?
+
+Also, we want this book to stand alone, so perhaps we should cut the link to Getting Started with Processing, and maybe mention it in the Preface?
+
+////
+
 Along the way, we'll continue to expand on the OOP concepts introduced in Chapter 9 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803&Click=37845[Getting Started with Processing], as well as show how to use the great http://www.sojamo.de/libraries/controlP5/[controlP5] library to create familiar GUI controls used in other languages.
 
 === IFS Fractals
 The http://en.wikipedia.org/wiki/Iterated_function_system[Iterated Function System], or IFS, is one of the simplest techniques for creating natural-looking fractals.  The IFS consists of a handful of transformations (more on these in a second) that describe how to change one point into another.  The http://en.wikipedia.org/wiki/Barnsley_fern[Barnsley Fern], which looks like a Black Spleenwort (a kind of fern), is the classic example of an IFS fractal, but there are many different varieties.  Larry Riddle has a nice breakdown of others on his http://ecademy.agnesscott.edu/~lriddle/ifs/ifs.htm[IFS systems] page.
 
-The technique works like this.  Starting from a single point, usually (0,0), you randomly apply one of the transformations that make up the IFS system.  Then, once you have the new, transformed point, you plot it on the screen, which in Processing we do with the set() command.  Then, you repeat the process again starting from the point you just computed. 
+The technique works like this.  Starting from a single point, usually (0,0), you randomly apply one of the transformations that make up the IFS system.  Then, once you have the new, transformed point, you plot it on the screen, which in Processing we do with the +set()+ command.  Then, you repeat the process again starting from the point you just computed. 
 
 After a few hundred iterations, you'll begin to see a ghostly outline of a fern.  After a 100,000 iterations, you'll see a detailed image that looks almost exactly like a natural object.  The following image shows the IFS system for the Barnsley fern, as well as the image that results when you apply the process over and over.
 
+////
+
+Can you supply captions for all figures?
+
+////
+
 [[barnsley]]
 .Here's a caption for this figure.
-
 image::attachments/frac_barnsley.png[scaledwidth="90%"]
+
+////
+
+Here's another dependency on GSw Processing. Readers will complain about us requiring another book, unless we make it super clear that you need to buy that book, too.
+
+////
 
 Let's unpack the details a bit more.  A transformation is a formula that...well, transforms one point into another point.  Just like the translate, rotate, and scale transformations described on page 104 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803&Click=37845[Getting Started with Processing], the transformations in the IFS system map a point to a new location by applying a http://en.wikipedia.org/wiki/Transformation_matrix[transformation matrix], which is a shorthand way of representing a set of formulas.
 
@@ -32,7 +51,9 @@ As an example, <<frac-matrix-example>> shows the 3rd transformation matrix for t
 
 image::attachments/frac_matrix_example.png[scaledwidth="90%"]
 
-The final column in the IFS matrix, p, represents the frequency with which the transformation is selected.  So, for the Barnsley fern, transformation f1 is selected 1% of the time, f2 is selected 85% of the time, and f3 and f4 are each selected 7% of the time.  If this is a bit confusing, think of as though you filled up a bag with 100 marbles, each labelled each with one of these functions.  You'd have 1 marble for f4, 85 for f2, 7 for f3, and 7 for f4.  At each iteration, you'd randomly grab a marble from the bag, look at it's label, apply the corresponding transformation, and then drop the marble backinto the bag.  
+The final column in the IFS matrix, p, represents the frequency with which the transformation is selected.  So, for the Barnsley fern, transformation f1 is selected 1% of the time, f2 is selected 85% of the time, and f3 and f4 are each selected 7% of the time.  
+
+If this is a bit confusing, think of as though you filled up a bag with 100 marbles, each labelled each with one of these functions.  You'd have 1 marble for f4, 85 for f2, 7 for f3, and 7 for f4.  At each iteration, you'd randomly grab a marble from the bag, look at it's label, apply the corresponding transformation, and then drop the marble back into the bag.  
 
 === controlP5
 Now that you understand the basic idea of the IFS fractals, let's take a quick look at http://www.sojamo.de/libraries/controlP5/[controlP5], a code library by http://www.sojamo.de/[Andreas Schlegel] for creating familiar user input controls, like the ones in <<frac-controlp5>>.
