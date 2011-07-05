@@ -103,7 +103,7 @@ Whew!  That was a lot of overview material, but now that controlP5 is installed 
 
 ////
 
-I think we should include the code in the chapter, since readers may not have Internet access while they read it (they might be on a plane, at the beach, etc.) With the inline code, you can use callouts instead of repeating the lines of code in the discussion. See http://www.methods.co.nz/asciidoc/chunked/ch17.html
+I think we should include the code in the chapter, since readers may not have Internet access while they read it (they might be on a plane, at the beach, etc.) With the inline code, you can use callouts instead of repeating the lines of code in the discussion. See http://www.methods.co.nz/asciidoc/chunked/ch17.html as well as ch_3d_anaglyph.asciidoc, ch_arraylist.asciidoc, and ch_qr_codes.asciidoc
 
 ////
 
