@@ -26,6 +26,7 @@ Can you supply captions for all figures?
 ////
 
 anchor:barnsley[]
+
 .Here's a caption for this figure.
 
 image::attachments/frac_barnsley.png[scaledwidth="90%"]
@@ -48,7 +49,7 @@ If the columns already represent the elements of a matrix, then where is the row
 
 ////
 
-[[frac-matrix]]
+anchor:frac-matrix[]
 
 .The matrix for the Barnsley fern
 
@@ -56,7 +57,8 @@ image::attachments/frac_matrix.png[scaledwidth="90%"]
 
 As an example, <<frac-matrix-example>> shows the 3rd transformation matrix for the Barnsley Fern in <<barnsley>>.
 
-[[frac-matrix-example]]
+anchor:frac-matrix-example[]
+
 .The matrix for the Barnsley fern
 
 image::attachments/frac_matrix_example.png[scaledwidth="90%"]
@@ -70,14 +72,16 @@ Now that you understand the basic idea of the IFS fractals, let's take a quick l
 
 We're going to use the "knob" control to allow the user to set the number of iterations used to create the drawing, and the "radio" control to select which IFS system to display.  
 
-[[frac-controlp5]]
+anchor:frac-controlp5[]
+
 .controlp5 controls
 
 image::attachments/frac_controlp5.png[scaledwidth="90%"]
 
 Before we can use the library in our sketch, we have to get it installed.  The first step is to make sure you have a directory called "libraries" in your Sketchbook directory. You can find the Sketchbook directory by opening the Processing's Preferences window. You'll see the directory name at the top, as shown in <<frac-prefs>>
 
-[[frac-prefs]]
+anchor:frac-prefs[]
+
 .Processing preferences
 
 image::attachments/frac_preferences.png[scaledwidth="90%"]
@@ -86,7 +90,8 @@ After you've located the main directory, use a tool like Window's Explorer, Mac'
 
 Next, you're ready to install controlP5.  Go to the http://www.sojamo.de/libraries/controlP5/[controlP5 main page] and click the link to download the latest version of the library.  (You'll find the link in the green box at the top, center of the screen.)  Once you've downloaded the file, uncompress it and copy the controlP5 directory into your "libraries" subdirectory. Restart Processing, and you should see the library appear under the "Sketch -> Import Library" menu item.  This is illustrated in <<frac-install>>.
 
-[[frac-install]]
+anchor:frac-install[]
+
 .Installing the controlp5 library
 
 image::attachments/frac_library.png[scaledwidth="90%"]
@@ -98,7 +103,7 @@ Whew!  That was a lot of overview material, but now that controlP5 is installed 
 
 ////
 
-I think we should include the code in the chapter, since readers may not have Internet access while they read it (they might be on a plane, at the beach, etc.)
+I think we should include the code in the chapter, since readers may not have Internet access while they read it (they might be on a plane, at the beach, etc.) With the inline code, you can use callouts instead of repeating the lines of code in the discussion. See http://www.methods.co.nz/asciidoc/chunked/ch17.html
 
 ////
 
@@ -107,16 +112,22 @@ I think we should include the code in the chapter, since readers may not have In
 You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/fractal_barnsley.pde[fractal_barnsley.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
 ====
 
+////
+
+Should you replace the mention of the video below with something else?
+
+////
+
 There's one thing you'll probably notice as you go through the example: it contains multiple class definitions at the end of the file. Fire up the code and you should see something very similar to the video at the beginning of this post.  You can click the radio buttons to select one from among a variety of different IFS fractals, and can also use the knob controller to set the number of iterations.
 
 === Discussion
 The code defines three classes that serve as the building block for the project:
 
-* The Transform class.  This class performs all math involved in the transformation matrix.  Most of the code is devoted to simply storing all the variables.  The evalX() and evalY() return the new X and Y coordinates for the point you pass in.
+The Transform class::: This class performs all math involved in the transformation matrix.  Most of the code is devoted to simply storing all the variables.  The evalX() and evalY() return the new X and Y coordinates for the point you pass in.
 
-* The IFS class.  This class implements the IFS data structures.  It consists of an ArrayList of Transform classes called tranforms, an ArrayList to represent the frequency distribution of those transforms called histogram (extending our earlier analogy, this is the bag of marbles we'll use to select the random transform from), and a description.  The key methods are: are addTransform(), which adds a new Transform to the transform list; addHistogram(), which adds a new "marble" to the histogram frequency distribution based on the Transform's "p" value; and selectRandomTransform(), which is used to select one of the transforms at random based on the frequency distribution specified in the "histogram" ArrayList.
+The IFS class::: This class implements the IFS data structures.  It consists of an ArrayList of Transform classes called tranforms, an ArrayList to represent the frequency distribution of those transforms called histogram (extending our earlier analogy, this is the bag of marbles we'll use to select the random transform from), and a description.  The key methods are: are addTransform(), which adds a new Transform to the transform list; addHistogram(), which adds a new "marble" to the histogram frequency distribution based on the Transform's "p" value; and selectRandomTransform(), which is used to select one of the transforms at random based on the frequency distribution specified in the "histogram" ArrayList.
 
-* The Point class.  Holds the x and y coordinate for the points in the fractal.
+The Point class::: Holds the x and y coordinate for the points in the fractal.
 
 We use these classes in a variety of ways in the main program.  First, in what's probably the most conspicuous portion of the code, we use IFS and Transform to define the various fractals we want to display.  For example, here's the code to create the Barnsley Fern:
 
@@ -155,7 +166,8 @@ The second part of using the controlP5 library is to set up action methods that 
 
 So, for the "ifsSelect()" method, we have a parameter that will tell us the index of the list item that was just selected.  We'll then use that index to retrieve the correct IFS pattern and make it the current one being displayed.  The following diagram summarizes all the elements in play.  (The controlP5 controls all work slightly differently, but the site has great http://www.sojamo.de/libraries/controlP5/index.html#examples[examples] of how to use them all.):
 
-[[frac-variable-map]]
+anchor:frac-variable-map[]
+
 .Mapping variables to controls in controlp5
 
 image::attachments/frac_variable_map.png[scaledwidth="90%"]
