@@ -26,7 +26,7 @@ The first thing to do is http://code.google.com/p/zxing/downloads/list[download 
 If you're using Windows, you'll need to install http://www.eden.net.nz/7/20071008/[WinVDIG] and http://www.apple.com/quicktime/download/[QuickTime] to use the webcam in Processing.
 ====
 
-If you're not, I've compiled them for you.  (But, don't tell anybody -- this probably violates some license requirement or the other.  Just download http://makezine.googlecode.com/svn/trunk/processing/qr_codes/javase.jar[javase.jar] and http://makezine.googlecode.com/svn/trunk/processing/qr_codes/core.jar[core.jar]. (A jar file like a zip file for Java that compresses and bundles multiple files.)
+If you're not, I've compiled them for you.Just download http://makezine.googlecode.com/svn/trunk/processing/qr_codes/javase.jar[javase.jar] and http://makezine.googlecode.com/svn/trunk/processing/qr_codes/core.jar[core.jar]. (A jar file like a zip file for Java that compresses and bundles multiple files.)
 
 Once you have the jar files, fire up Processing and then use "Sketch -> Add File" to add them to your project.  Then paste in the sketch code into the main code window.  You can get it from the http://makezine.googlecode.com/svn/trunk/processing/qr_codes/qr_codes.pde[qr_codes.pde]  file or pull it from the following listing:
 
