@@ -49,7 +49,6 @@ If the columns already represent the elements of a matrix, then where is the row
 
 [[frac-matrix]]
 .The matrix for the Barnsley fern
-
 image::attachments/frac_matrix.png[scaledwidth="90%"]
 
 As an example, <<frac-matrix-example>> shows the 3rd transformation matrix for the Barnsley Fern in <<barnsley>>.
