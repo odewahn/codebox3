@@ -26,7 +26,9 @@ Can you supply captions for all figures?
 ////
 
 [[barnsley]]
+
 .Here's a caption for this figure.
+
 image::attachments/frac_barnsley.png[scaledwidth="90%"]
 
 ////
