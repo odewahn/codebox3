@@ -2,16 +2,18 @@
 This Codebox shows you how to use the http://code.google.com/p/zxing/[ZXing] library (pronounced "Zebra Crossing") to identify QR codes in a live webcam feed.  (Although Processing has a great contributed library called http://www.shiffman.net/p5/pqrcode/[QRCode], the ZXing library is much faster and can do recognition in realtime.)  The sketch looks for QR codes with an encoded O'Reilly books ISBN (ISBNs are standard book identifiers).  When it finds one, it superimposes the book's cover image onto the video over the QR code.
 
 === About QR Codes
-Before jumping into the code, a bit of background. A QR code has two basic parts -- the three positioning elements, which are the large square blocks at the three corners, and the data elements, which is everything else. The positioning elements help the software determine the QR code's location and orientation.  The data elements represent the encoded data.  For example, it could be a product number, a URL, or (in our case here) an ISBN.  The code also has some information used for error correction.  <<qr-code>> image should give you the basic idea:
+Before jumping into the code, a bit of background. A QR code has two basic parts -- the three positioning elements, which are the large square blocks at the three corners, and the data elements, which is everything else. The positioning elements help the software determine the QR code's location and orientation.  The data elements represent the encoded data.  For example, it could be a product number, a URL, or (in our case here) an ISBN.  The code also has some information used for error correction.  <<qr-code>> image should give you the basic idea.
 
-[[qr-code]]
+anchor:qr-code[]
+
 .A QR code consists of encoded data, 3 position indicators, and error correction.
 
 image::attachments/qr_code_ano03012011.png[scaledwidth="90%", float="none"]
 
 You can use a site like http://qrcode.kaywa.com/[Kaywa] to generate the code.  <<kaywa>> shows how to generate a code for "9780596510510," the ISBN for Tom Igoe's book http://www.makershed.com/ProductDetails.asp?ProductCode=0596510519[Making things Talk]:
 
-[[kaywa]]
+anchor:kaywa[]
+
 .Kaywa, a site for creating QR codes from plain text
 
 image::attachments/kaywa_ano03012011.png[scaledwidth="90%"]
@@ -19,34 +21,103 @@ image::attachments/kaywa_ano03012011.png[scaledwidth="90%"]
 === Setting up the sketch
 The first thing to do is http://code.google.com/p/zxing/downloads/list[download ZXing] and use your Java compiler to create two files: core.jar and javase.jar.  If you're comfortable with Java, all you have to do is go into the "core" and "javase" directories and run  http://ant.apache.org[ant] to build the jar files. 
 
+[NOTE]
+====
+If you're using Windows, you'll need to install http://www.eden.net.nz/7/20071008/[WinVDIG] and http://www.apple.com/quicktime/download/[QuickTime] to use the webcam in Processing.
+====
+
 If you're not, I've compiled them for you.  (But, don't tell anybody -- this probably violates some license requirement or the other.  Just download http://makezine.googlecode.com/svn/trunk/processing/qr_codes/javase.jar[javase.jar] and http://makezine.googlecode.com/svn/trunk/processing/qr_codes/core.jar[core.jar]. (A jar file like a zip file for Java that compresses and bundles multiple files.)
 
 Once you have the jar files, fire up Processing and then use "Sketch -> Add File" to add them to your project.  Then paste in the sketch code into the main code window.  You can get it from the http://makezine.googlecode.com/svn/trunk/processing/qr_codes/qr_codes.pde[qr_codes.pde]  file or pull it from the following listing:
 
-[NOTE]
-====
-You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/qr_codes.pde[qr_codes.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
-====
+----
+import processing.video.*;
+import com.google.zxing.*;
+import java.awt.image.BufferedImage;
+
+Capture cam; // Set up the camera
+com.google.zxing.Reader reader = 
+  new com.google.zxing.qrcode.QRCodeReader(); // <1>
+
+int WIDTH = 640;
+int HEIGHT = 480;
+
+PImage cover;  // This will have the cover image
+String lastISBNAcquired = "";  // This is the last ISBN we acquired
+
+// Grabs the image file    
+//
+void setup() {
+  size(640, 480);
+  cam = new Capture(this, WIDTH, HEIGHT);
+}
+ 
+
+void draw() {
+  if (cam.available() == true) {
+    cam.read();    
+    image(cam, 0,0);
+    try {
+       // Now test to see if it has a QR code embedded in it
+       LuminanceSource source = // <2>
+         new BufferedImageLuminanceSource((BufferedImage)cam.getImage());
+       BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));       
+       Result result = reader.decode(bitmap); // <3>
+       
+       // Once we get the results, we can do some display
+       if (result.getText() != null) { 
+       
+          println(result.getText());
+          ResultPoint[] points = result.getResultPoints(); // <4>
+          
+          // Draw some ellipses on at the control points
+          for (int i = 0; i < points.length; i++) {
+            fill(#ff8c00);
+            ellipse(points[i].getX(), points[i].getY(), 20,20);
+          }
+          
+          // Now fetch the book cover, if it is found // <5>
+          if (!result.getText().equals(lastISBNAcquired)) {
+             String url = 
+               "http://covers.oreilly.com/images/" + 
+               result.getText() + "/cat.gif";
+             try {
+                cover = loadImage(url,"gif");
+                lastISBNAcquired = result.getText(); // <6>
+             } catch (Exception e) {
+               cover = null;
+             }
+          }
+          
+          // Superimpose the cover on the image
+          if (cover != null) {
+            image(cover, points[1].getX(), points[1].getY());
+          }
+       }
+    } catch (Exception e) {
+//         println(e.toString()); 
+    }
+  }
+}
+----
 
 Print off a few QR Codes for various O'Reilly books and start the sketch.  When you show the codes to the webcam, you should see the cover image appear after a short delay.  Of course, you can encode any other information you like.  
 
 === Discussion
-The setup is similar to the one we've used in the posts on OpenCV.  First, we set up a new reader object, like this:
+The setup is similar to the one we've used in the posts on OpenCV:
 
-----
-com.google.zxing.Reader reader = new com.google.zxing.MultiFormatReader();
-----
+////
 
-Then, we pass the reader an image that might contain a QR code. In this case, we're just passing it the frames coming in from the webcam. It's slightly more complex in that we have to do a couple of transformations on the raw image before we can use the decoder -- this is all done in the draw() method:
+I've inserted the code listing above and have switched to using callouts so you can see how it looks.
 
-----
-LuminanceSource source = new BufferedImageLuminanceSource((BufferedImage)cam.getImage());
-BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));       
-Result result = reader.decode(bitmap); 
-----
+////
 
-Once we've called decode(), the reader object will have data about any QR codes it's detected.  The getResultPoints() method returns the coordinates of each of the position indicators, and the getText() method returns the encoded text.  Assuming we found something, we then just try to pull off the corresponding cover from the O'Reilly site and display it.  As one bit of a wrinkle, we keep track of the last ISBN we found so that we're not constantly loading the same image on every frame.
+<1> First, we set up a new reader object, like this:
+<2> Then, we pass the reader an image that might contain a QR code. In this case, we're just passing it the frames coming in from the webcam. It's slightly more complex in that we have to do a couple of transformations on the raw image before we can use the decoder.
+<3> Once we've called decode(), the reader object will have data about any QR codes it's detected.  
+<4> The getResultPoints() method returns the coordinates of each of the position indicators.
+<5> Assuming we found something, we then just try to pull off the corresponding cover from the O'Reilly site and display it.  As one bit of a wrinkle, we keep track of the last ISBN we found so that we're not constantly loading the same image on every frame.
+<6> The getText() method returns the encoded text.  
 
 This demo should give you most of what you need to do your own QR hacking with Processing.  Have fun!
 
-PS:  Remember, it you're using Windows, you'll need to install http://www.eden.net.nz/7/20071008/[WinVDIG] and http://www.apple.com/quicktime/download/[QuickTime] to use the webcam in Processing.
