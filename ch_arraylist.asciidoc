@@ -2,10 +2,6 @@
 
 This sketch illustrates how to create and manage a list of interactive objects. Whether you're writing games, http://processing.org/learning/topics/smokeparticlesystem.html[particle systems], or an Arduino controlled magic show, these are tools you'll use again and again as you go further with Processing.  
 
-[NOTE]
-====
-You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/magic_words.pde[magic_words.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
-====
 
 Next, we need to do is create a nice font for the target. (Fonts are discussed in Chapter 6 of http://oreilly.com/catalog/0636920000570[Getting Started with Processing]). Why, you ask? Out of the box, Processing has just a simple command called text() that will display text, but you can't tell how much space they occupy on the screen (which will be important, as we'll see in a minute). Plus, they're just you're plain old Arial font, so they aren't very interesting.
 
@@ -29,112 +25,292 @@ To use objects, you first create a class (or several classes -- you can use many
 
 Creating new objects is the job of Processing's new command -- it makes a new object variable by calling a special method called the constructor. The constructor initializes the object's variables and generally gets it ready for action; the only difference between it and any other method is that it has the same name as the class itself.
 
-OK, enough review. Let's talk about the code. As discussed earlier, the Target class is a building block. Its fields include:
+[NOTE]
+====
+You can find the code listing for this project, https://github.com/odewahn/codebox-code/blob/master/magic_words.pde[magic_words.pde], on this book's https://github.com/odewahn/codebox-code[github repository].
+====
 
-* Current position, as represented by the variables "x" and "y"
+OK, enough review. Let's talk about the code. Let's first look at the Target class, which appears at the end of the sketch:
 
-* Speed and direction, as represented by the variables "dx" and "dy". These are just randomly chosen values.
+----
+class Target {
+  
+  float x, y, dx, dy; // <1> <2>
+  float w, h;  //Width and height of the box // <3>
+  int fontSize = 48; // <4>
+  Boolean inTarget = false; // <5>
+  String currentText, beforeText, afterText; // <6>
+  
+  // Constructor -- called when the object is created with "new"
+  Target(String _beforeText, String _afterText) { <7>
+     beforeText = _beforeText;
+     afterText = _afterText;
+     currentText = _beforeText;
+     x = random(0,width);
+     y = random(0,height);
+     dx = random(-5,5);
+     dy = random(-5,5);
+     setBox();
+  }
+  
+  // Advances the object to a new position
+  void step() { // <8>
+    x += dx;
+    y += dy;
+  }
+  
+  // Determines if the object is still on the stage
+  Boolean onStage() { // <9>
+    Boolean retVal = false;
+    if (((x+w) > 0) && (x < width) && (y > 0) && ((y-h) < height)) {
+        retVal = true;
+    }
+    return retVal;
+  }
+  
+  // Set the height and width of the bounding text box
+  void setBox() { // <10>
+     h = fontSize;
+     textFont(font, fontSize);
+     w = textWidth(currentText);
+  }
+  
+  // Determines is a particular x,y coordinate is within the box
+  boolean detectCollision(float cx, float cy) { // <11>
+     boolean retVal = false;
+     if ( (cx > x) && (cx < (x+w)) && (cy > (y-h)) && (cy < y)) {
+        retVal= true;
+     }
+     return retVal;
+  }
+  
+  // Toggles the which target word is displayed 
+  void toggle() { // <12>
+     if (currentText == beforeText) {
+        currentText = afterText;
+     } else {
+       currentText = beforeText;
+     }
+     setBox();
+  }
+  
+  // Displays the text at x,y
+  void paint() { // <13>
+    fill(255);
+    textFont(font,fontSize);
+    textSize(fontSize);
+    text(currentText,x,y);
+  }
+  
+}
+----
 
-* Width and height, as represented by the variables "w" and "h"
+As discussed earlier, the Target class is a building block. Its fields include:
 
-* Font size (more on this in a bit)
-
-* A flag indicating whether the wand is touching the target (flag is the programming term for any variable used to represent a specific status, like on or off)
-
-* The current text of the target (i.e., "Hat" or "Rabbit")
-
-After the mandatory constructor Target(), whose job is to set the values of the before and after text for the target,the methods include:
-
-* step(), which makes the target move around the stage. This works by adding the the "dx" and "dy" to the "x" and "y" variables.
-
-* paint(), which draws the target on the stage at the ("x", <i>y</i>) position
-
-* detectCollision(), which determines if the wand has collided with the target
-
-* setBox(), which updates the target's width and height variables based on whether it's been touched by the wand
-
-* toggle(), which changes the target word. (i.e., if the current word is "Hat," then toggle() makes it "Rabbit," and vice versa)
-
-* onStage(), which returns a flag indicating if the target has flown off the visible screen area
-
-The first two methods are pretty straightforward, but the remaining methods, which are used to detect collisions, deserve a bit more attention. If you'll recall from the initial Codebox, collision detection is name for all the ways tou can determine it two things are intersecting on the screen. In the original wand example, we had a circular target, so we used a simple distance formula to determine if the wand's coordinates were inside the radius of the target. In this example, we're using a rectangular target. To make things a bit more complicated, the target changes size when the want touches it, so we need some supporting methods to make sure all the variables are in line with the current state of the target. <<arraylist-target-size>> shows the various pieces that are in play:
+<1> Current position, as represented by the variables "x" and "y"
+<2> Speed and direction, as represented by the variables "dx" and "dy". These are just randomly chosen values.
+<3> Width and height, as represented by the variables "w" and "h"
+<4> Font size (more on this in a bit)
+<5> A flag indicating whether the wand is touching the target (flag is the programming term for any variable used to represent a specific status, like on or off)
+<6> The current text of the target (i.e., "Hat" or "Rabbit")
+<7> After the mandatory constructor Target(), whose job is to set the values of the before and after text for the target, the methods include the following.
+<8> step() makes the target move around the stage. This works by adding the the "dx" and "dy" to the "x" and "y" variables.
+<9> onStage() returns a flag indicating if the target has flown off the visible screen area. Once it's flown out, it's recycled by putting it at some new spot with a new speed and direction. It's comforting to note that despite the added complexities, most of this code is almost identical to Example 5-17: The Bounds of a Rectangle, in http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing].
+<10> setBox() updates the target's width and height variables based on whether it's been touched by the wand
+<11> detectCollision() determines if the wand has collided with the target.   If you'll recall from the initial Codebox, collision detection is name for all the ways you can determine it two things are intersecting on the screen. In the original wand example, we had a circular target, so we used a simple distance formula to determine if the wand's coordinates were inside the radius of the target. In this example, we're using a rectangular target. To make things a bit more complicated, the target changes size when the want touches it, so we need some supporting methods to make sure all the variables are in line with the current state of the target. <<arraylist-target-size>> shows the various pieces that are in play.
+<12> toggle() changes the target word. (i.e., if the current word is "Hat," then toggle() makes it "Rabbit," and vice versa)
+<13> paint() draws the target on the stage at the ("x", <i>y</i>) position.
 
 [[arraylist-target-size]]
 .Determining the size of the target
 
 image::attachments/arraylist_target_size.png[scaledwidth="90%"]
 
-With this diagram, it's pretty easy to write the code for detectCollision():
-
-----
-  //Determines is a particular x,y coordinate is within the box
-  boolean detectCollision(float cx, float cy) {
-     boolean retVal = false;
-     if ( (cx > x) &amp;&amp; (cx < (x+w)) &amp;&amp; (cy >; (y-h)) &amp;&amp; (cy < y)) {
-        retVal= true;
-     }
-     return retVal;
-  }
-----
-
-Finally, the onStage() determines if the target is still inside the visible stage. Once it's flown out, it's recycled by putting it at some new spot with a new speed and direction. It's comforting to note that despite the added complexities, most of this code is almost identical to Example 5-17: The Bounds of a Rectangle in http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing].
-
 === Arraylist of targets
-Now that we've gone through the Target class, let's take a look at how it's used. As mentioned at the outset, the main goal of this example was to show how you could manage multiple objects dynamically. While standard arrays (discussed in Chapter 10 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing]) are great for many things, they're not very dynamic because once you've specified how many elements they have, you're stuck with that forever.
-
-For example, suppose you wanted to have a bunch of targets, but rather than recycling them like we've done here, you simply wanted to delete them. In a standard array, you can't delete elements. If you started with 5, you always have 5, no matter what. So, if you want to "delete" something, you have to have some sort of clumsy workaround. Or, on the flip side, suppose you had a program where you usually had a handful of items to manage, but on some occasions, you might have many thousands. Using a standard array, you'd have to create space for thousands every time, which wastes memory and can make your sketches slower.
-
-Processing's ArrayList is a way around these limitations. Rather than being a simple data type, like float or int, an ArrayList is a building block class for managing other objects. It has methods for adding new items, deleting existing one, finding how many items are in the list, and so forth. In addition to being a really useful tool, working with ArrayList will familiarize you with the techniques you'll use in other, more sophisticated classes, like HashMaps (something we'll explore in future posts). So, let's look at the code.
-
-Creating an ArrayList is fairly simple, and is done in this line; note how we don't have to declare a size:
+Now that we've gone through the Target class, let's take a look at how it's used. Here is the rest of the sketch:
 
 ----
-ArrayList targets;  //an ArrayList is a  dynamic way to manage arrays
-----
+import processing.video.*;
 
-Once it's been declared, we can start adding some new objects into the ArrayList, which we do with the add() method. Here's the snippet of code in the setup() method that adds the initial targets:
+Capture cam;
 
-----
-  targets = new ArrayList();  // Create a new list 
+PFont font;
+
+
+// Variables to determine the size of the box used to acquire a target
+int colorDist = 50; // Controls how close the current pixel color 
+                    // must match to the target color
+                    
+color targetColor =  color(255,255,255);   // Color of the target
+boolean acquireMode = true;
+int targetX = 10;
+int targetY = 25;
+int targetSide = 10;
+
+// Used to find the geometric center of the target based on an average
+float wandX = 0;
+float wandY = 0;
+boolean wandFound = false;
+
+ArrayList targets;  // an ArrayList is a dynamic way to manage arrays <1>
+int N = 5;  // Number of targets to keep on the screen at any given time
+
+void setup() {
+  size (640, 480); // set to 4x3 aspect ratio for screencasting
+  cam = new Capture(this, width, height);
+  frameRate(60);
+  //Be sure to create this font using "Tools -> Create Font"
+  font = loadFont("Baskerville-Bold-48.vlw"); 
+  targets = new ArrayList();  // Create a new list <2>
   for (int i=0; i < N; i++) {
-    targets.add(new Target("Hat", "Rabbit"));
+    targets.add(new Target("Hat", "Rabbit")); // <3>
   }
-----
+  
+}
 
-This snippet has a few interesting points. First, it demonstrates the syntax for calling a method, which is object "variable.method (argument list)". Second, it shows how you can use an object as an argument to ArrayList. Note how we use the new command in the argument list -- that will create a new Target object variable and pass it into the list. Finally, the snippet shows how we can do all this inside a loop. We could add 10, 100, or 10,000 objects -- the size of the list is completely dynamic.
-
-This next snippet, which appears in the draw() method, shows how we can use the get() method to pull an item from the ArrayList:
-
-----
+void draw() {
+  if (cam.available()) {
+    cam.read(); 
+    image(cam,0,0);
+  }
+  
+  if(acquireMode) {
+    // Display the current target color
+    strokeWeight(1);
+    fill(targetColor);
+    rect(targetX,targetY - 2 * targetSide,targetSide, targetSide);     
+    // Display the acquisition box 
+    fill(color(255,255,255));
+    rect(targetX,targetY,targetSide, targetSide);
+    textSize(10);
+    text("Place target in square and press any key when done.", 
+        targetX + 1.5 * targetSide,targetY + targetSide);
+    // Set a new random color gradient      
+    targetColor = acquireTargetColor();
+  } 
+  else {
+    searchForTargetColor();
+    // Process the list of targets
+    fill(255,0,0);
+    ellipse(wandX,wandY,10,10);
     for  (int i=0; i < targets.size(); i++) {
-       Target t = (Target) targets.get(i); //Fetch the i'th target from the Array
-       t.paint();  // Paint it
-       //Check for collisions
-       if (t.detectCollision(wandX, wandY)) {
+       // Fetch the i'th target from the Array
+       Target t = (Target) targets.get(i); // <4>
+       t.paint();  // Paint it <5>
+       // Check for collisions
+       if (t.detectCollision(wandX, wandY)) { // <6>
           if (! t.inTarget) {
              t.toggle();
              t.inTarget = true;
           }
        } else {
-         t.inTarget = false;
+         t.inTarget = false; // <7>
        }
-       t.step(); // Advance it on the screen
-       //If the current target has moved off the stage, delete it from the list and create a new target
-       if (!t.onStage()) {
-          targets.remove(i);
+       t.step(); // Advance it on the screen <8>
+       // If the current target has moved off the stage, delete it 
+       // from the list and create a new target
+       if (!t.onStage()) { // <9>
+          targets.remove(i); 
           targets.add(new Target("Hat", "Rabbit"));
        }     
     }
+  }
+}
+
+// Finds the average target color that has been placed in the target box
+// Loops through each pixel in the target acquisition area and determines 
+// the "average" color
+color acquireTargetColor() {
+  int r = 0;
+  int g = 0;
+  int b = 0;
+  int cnt = 0;
+  cam.loadPixels();
+  for (int i = 0; i < targetSide; i++) {
+    for (int j=0; j < targetSide; j++) {
+      cnt += 1;
+      int x = targetX + i;  //x point inside the target box
+      int y = targetY + j;  //y point inside the target box
+      // Pull out the current pixel color
+      color c = cam.pixels[y*width + x];
+      r += red(c);
+      g += green(c);
+      b += blue(c);
+    }
+  }
+  targetColor = color(r/cnt, g/cnt, b/cnt);
+  return targetColor;
+}
+
+// Searches for the target color.  Searches each pixel in the entire image
+// and compares it to the target color.  If the distance is less than the 
+// threshold colorDist, it's assummed to be a match
+void searchForTargetColor() {
+  // Reset wand
+  wandX = 0;
+  wandY = 0;
+  wandFound = false;
+  cam.updatePixels();
+  //Now search for pixels that match the target color
+  int numPoints = 0;  //Number of points found
+  int sx = 0;  //Sum of all x coordinates found
+  int sy = 0;  //Sum of all the y coordinates found
+  for (int i=0; i < width; i++) {
+    for (int j=0; j < height; j++) {
+      color pix = cam.pixels[j*width + i]; //Grab pixel at i,j
+      float dr = red(targetColor) - red(pix);
+      float dg = green(targetColor) - green(pix);
+      float db = blue(targetColor) - blue(pix);
+      float d = sqrt ( pow(dr,2) + pow(dg,2) + pow(db,2));
+      // If it's a match, then keep a running total
+      if (d < colorDist) {
+        numPoints += 1;
+        sx += i;
+        sy += j;
+      }
+    }
+  }
+  // If we found the target color, set the wand coordinates
+  if (numPoints > 0) {
+    wandX = sx / numPoints;
+    wandY = sy / numPoints;
+    wandFound = true;
+  }
+}
+
+
+// Toggle the acquire mode
+void keyPressed() {
+  acquireMode = !acquireMode;
+}
 ----
 
-The most important line here is the "Target t = (Target)targets.get(i);".  Several things are happening.  The first is that we're creating a new Target variable called "t".  This time, though, we're not using the new command.  Why, you ask?  It's because the object we're trying to access already exists -- it was created earlier in the setup() method. All we're doing here is retrieving it.  Second, we have this kind of weird syntax of (Target).  This is the way that we tell Processing what type of variable it is that we're expecting to retrieve.  This is called "casting," and requires a bit more explanation.
+As mentioned at the outset, the main goal of this example was to show how you could manage multiple objects dynamically. While standard arrays (discussed in Chapter 10 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing]) are great for many things, they're not very dynamic because once you've specified how many elements they have, you're stuck with that forever.
 
+For example, suppose you wanted to have a bunch of targets, but rather than recycling them like we've done here, you simply wanted to delete them. In a standard array, you can't delete elements. If you started with 5, you always have 5, no matter what. So, if you want to "delete" something, you have to have some sort of clumsy workaround. Or, on the flip side, suppose you had a program where you usually had a handful of items to manage, but on some occasions, you might have many thousands. Using a standard array, you'd have to create space for thousands every time, which wastes memory and can make your sketches slower.
+
+Processing's ArrayList is a way around these limitations. Rather than being a simple data type, like float or int, an ArrayList is a building block class for managing other objects. It has methods for adding new items, deleting existing one, finding how many items are in the list, and so forth. In addition to being a really useful tool, working with ArrayList will familiarize you with the techniques you'll use in other, more sophisticated classes, like HashMaps (something we'll explore in future posts). So, let's look at the code.
+
+<1> Declaring an ArrayList is fairly simple, and is done in this line.
+  
+<2> Once it's been declared, we can create it. Note how we don't have to declare a size.
+  
+<3> Here, we start adding some new objects into the ArrayList using the add() method.  This code has a few interesting points. First, it demonstrates the syntax for calling a method, which is object "variable.method (argument list)". Second, it shows how you can use an object as an argument to ArrayList. Note how we use the new command in the argument list -- that will create a new Target object variable and pass it into the list. Finally, the snippet shows how we can do all this inside a loop. We could add 10, 100, or 10,000 objects -- the size of the list is completely dynamic.
+  
+<4> Here, we use the get() method to pull an item from the ArrayList. Several things are happening.  The first is that we're creating a new Target variable called "t".  This time, though, we're not using the new command.  Why, you ask?  It's because the object we're trying to access already exists -- it was created earlier in the setup() method. All we're doing here is retrieving it.  Second, we have this kind of weird syntax of (Target).  This is the way that we tell Processing what type of variable it is that we're expecting to retrieve.  This is called "casting," and requires a bit more explanation.
++
 If you'll recall, ArrayList is a generic tool -- we could use it with a Target variable, the Jitterbug class discussed in Chapter 10 of http://www.makershed.com/ProductDetails.asp?ProductCode=9781449379803[Getting Started with Processing], or any other class variable we might create in the future.  However, Processing (and Java, the underlying language it's based on) can't deal with generic object.  It requires that we give every variable an exact type when we declare it.  Adding (Target) to the front of the get() command is what does this -- we're telling Processing "Hey, we're pulling off a 'Target' object."  You'll see this referred to as casting in other programming resources.
-
++
 Finally, we have the "targets.get(i)" part of the line.  This is just saying "pull in the element at position i from the targets ArrayList."  
 
-Once we've actually retrieved the variable t, we can call read it's variables, call its methods, and generally make it do our bidding.  In this example, we first call the paint() method to draw the target on the screen.  Next, we check to see if the wand is touching it (as you'll recall from the http://blog.makezine.com/archive/2010/09/codebox_create_a_magic_wand_1.html[last Codebox], the wand's position is represented by the variables wandX and wandY).  If there is a collision, we first check to see if the wand was already inside the target.  (In other words, the wand might have collided with the object on an earlier iteration of setup() and still be inside the target box.)  If it's not (i.e., it's hitting the target box for the first time), then we toggle the text and set the inTarget flag.  
+<5> Once we've actually retrieved the variable t, we can read its variables, call its methods, and generally make it do our bidding.  In this example, we first call the paint() method to draw the target on the screen.  
+// I couldn't find the magic wand codebox in the book.
+<6> Next, we check to see if the wand is touching it (as you'll recall from the http://blog.makezine.com/archive/2010/09/codebox_create_a_magic_wand_1.html[the magic wand Codebox], the wand's position is represented by the variables wandX and wandY).  If there is a collision, we first check to see if the wand was already inside the target.  (In other words, the wand might have collided with the object on an earlier iteration of setup() and still be inside the target box.)  If it's not (i.e., it's hitting the target box for the first time), then we toggle the text and set the inTarget flag.  
 
-If the wand is already in the target, then we simply set the target flag to false, which prevents the target from alternating state on each iteration of draw().  The next command, t.step(), simply increments the target's x and y positions.  Finally, the last if block checks to see if the target is no longer visible on the stage.  If it's not (i.e., it has wandered off the visible area of the screen), then the target is removed from the ArrayList using the remove() method; a new target is then added in at some random new place.
+<7> If the wand is already in the target, then we simply set the target flag to false, which prevents the target from alternating state on each iteration of draw().  
+  
+<8> This command simply increments the target's x and y positions.  
+  
+<9> Finally, the last if block checks to see if the target is no longer visible on the stage.  If it's not (i.e., it has wandered off the visible area of the screen), then the target is removed from the ArrayList using the remove() method; a new target is then added in at some random new place.
 
 Whew!  That's a lot of abstract stuff, but it's worth understanding because you will use these techniques again and again. Whether you're using an ArrayList, a HashMap, or some other general data structure, understanding these basic steps -- creating a new object, storing it in a generic data structure, and retrieving it -- is essential in making more sophisticated programs.
