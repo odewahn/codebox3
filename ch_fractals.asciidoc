@@ -96,7 +96,7 @@ Whew!  That was a lot of overview material, but now that controlP5 is installed 
 
 ////
 
-I think we should include the code in the book, since readers may not have Internet access while they read it (they might be on a plane, at the beach, etc.)
+I think we should include the code in the chapter, since readers may not have Internet access while they read it (they might be on a plane, at the beach, etc.)
 
 ////
 
