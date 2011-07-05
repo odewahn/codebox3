@@ -25,7 +25,7 @@ Can you supply captions for all figures?
 
 ////
 
-[[barnsley]]
+<<barnsley>>
 
 .Here's a caption for this figure.
 
